@@ -1,0 +1,431 @@
+/* Modern Dynamic CSS for Brain Cancer Detection Site */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+:root {
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #1a1a1a;
+    --accent-color: #00d4ff;
+    --success-color: #00ff88;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --border-color: #333;
+    --shadow-primary: 0 8px 32px rgba(0, 212, 255, 0.15);
+    --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--primary-bg);
+    background-image: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+    color: var(--text-primary);
+    padding: 40px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease-out;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px), linear-gradient(rgba(118, 75, 162, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(118, 75, 162, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 40px 40px, 40px 40px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+    pointer-events: none;
+    z-index: -1;
+    animation: backgroundShift 25s ease-in-out infinite;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 15% 25%, rgba(0, 212, 255, 0.08) 0%, transparent 40%), radial-gradient(circle at 85% 75%, rgba(118, 75, 162, 0.08) 0%, transparent 40%), radial-gradient(circle at 45% 80%, rgba(102, 126, 234, 0.06) 0%, transparent 35%);
+    pointer-events: none;
+    z-index: -1;
+    animation: floatingBoxes 30s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%,
+    100% {
+        transform: translate(0, 0);
+        background-position: 0 0, 0 0, 0 0, 0 0;
+    }
+    25% {
+        transform: translate(5px, -5px);
+        background-position: 10px 0, 0 10px, -5px 5px, 5px -5px;
+    }
+    50% {
+        transform: translate(10px, 10px);
+        background-position: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
+    }
+    75% {
+        transform: translate(-5px, 5px);
+        background-position: -10px 30px, 30px -10px, 15px -5px, -5px 15px;
+    }
+}
+
+@keyframes floatingBoxes {
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    33% {
+        transform: scale(1.1) rotate(5deg);
+        opacity: 0.6;
+    }
+    66% {
+        transform: scale(0.9) rotate(-3deg);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+h1 {
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.8s ease-out 0.2s both;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+    animation: fadeIn 1s ease-out 0.8s both;
+}
+
+input[type="file"] {
+    margin-top: 30px;
+    padding: 16px 24px;
+    background: var(--secondary-bg);
+    background-image: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-secondary);
+}
+
+input[type="file"]:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary), 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+input[type="file"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-primary), 0 0 0 4px rgba(0, 212, 255, 0.1);
+}
+
+input[type="file"]::file-selector-button {
+    background: var(--gradient-accent);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-right: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+button {
+    margin-top: 30px;
+    padding: 16px 32px;
+    background: var(--gradient-accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 212, 255, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #00b8e6 0%, #0088bb 100%);
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:active {
+    transform: translateY(-1px);
+    transition: transform 0.1s;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--shadow-secondary);
+}
+
+img {
+    display: block;
+    margin: 40px auto 20px auto;
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--border-color);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-secondary);
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.3s both;
+}
+
+img:hover {
+    transform: scale(1.02) rotate(0.5deg);
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-primary), 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+img.loaded {
+    animation: pulse 0.6s ease-out, fadeIn 0.6s ease-out;
+}
+
+#result {
+    margin-top: 30px;
+    padding: 20px 30px;
+    font-size: 1.4rem;
+    color: var(--success-color);
+    font-weight: 700;
+    background: rgba(0, 255, 136, 0.1);
+    border: 2px solid rgba(0, 255, 136, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 255, 136, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: slideIn 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+#result::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--success-color), transparent);
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+#result.error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border-color: rgba(255, 107, 107, 0.3);
+    box-shadow: 0 8px 32px rgba(255, 107, 107, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+#result.error::before {
+    background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
+}
+
+
+/* Loading Animation */
+
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+    input[type="file"],
+    button {
+        width: 100%;
+        max-width: 300px;
+    }
+    img {
+        max-width: 280px;
+    }
+    #result {
+        font-size: 1.2rem;
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+    input[type="file"],
+    button {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    img {
+        max-width: 250px;
+    }
+}
+
+
+/* High contrast mode support */
+
+@media (prefers-contrast: high) {
+     :root {
+        --border-color: #666;
+        --text-secondary: #ccc;
+    }
+}
+
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
