@@ -31,20 +31,17 @@ This project allows users to upload MRI scans, processes them through a **pretra
 ```bash
 git clone https://github.com/your-username/brain-tumor-detection.git
 cd brain-tumor-detection
+```
 2️⃣ Create & activate virtual environment
-bash
-Copy
-Edit
+```bash
 python -m venv venv
 source venv/bin/activate   # On Linux/Mac
 venv\Scripts\activate      # On Windows
+```
 3️⃣ Install dependencies
-bash
-Copy
-Edit
+```bash
 pip install -r requirements.txt
+```
 4️⃣ Run the backend
-bash
-Copy
-Edit
+```bash
 uvicorn backend.main:app --reload
